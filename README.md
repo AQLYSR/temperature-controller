@@ -4,7 +4,7 @@ This project is part of my instrumentation course in my university.
 
 This project aimed to simulate a device that could control the output  temperature based on the temperature of the environment. It's ideal to utilize AC in this device, but due to lack of resource, we decide to use DC motor instead. The following is the schematic diagram of the device:
 
-![Schematic Diagram](schematic/schematic.svg)
+![Schematic Diagram](schematic/schematic_temperature.png)
 
 ## Basic Functions
 
