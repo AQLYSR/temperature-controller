@@ -26,6 +26,8 @@ void setup() {
 void loop() {
   float temp = dht.readTemperature(); // Celsius by default
 
+  float calibTemp = (((temp-25)*6.5)/6.23)+25;
+
   if (isnan(temp)) {
     Serial.println("Failed to read from DHT sensor!");
     return;
@@ -33,17 +35,20 @@ void loop() {
 
   Serial.print("Temp: ");
   Serial.print(temp);
-  Serial.println(" °C");
+  Serial.print(" °C | Calibrated Temp: ");
+  Serial.print(calibTemp);
+  Serial.println("°C");
+
 
   // Control motor speed
   if (temp < 25.0) {
     analogWrite(ENA, 0); // Motor OFF
   } else if (temp < 27.0) {
-    analogWrite(ENA, 100); // Slow
+    analogWrite(ENA, 10); // Slow
   } else if (temp < 30.0) {
-    analogWrite(ENA, 180); // Medium
+    analogWrite(ENA, 30); // Medium
   } else {
-    analogWrite(ENA, 255); // Fast
+    analogWrite(ENA, 50); // Fast
   }
 
   delay(1000); // Read every 1 second
